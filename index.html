@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Front-end Teste</title>
+  </head>
+  <body>
+    <h1>Formulário teste</h1>
+    <input id="descricao" placeholder="Descrição" />
+    <input id="nome" placeholder="Nome">
+    <button onclick="adicionarTarefa()">Adicionar tarefa</button>
+    <button onclick="deleteTarefa()">Remover tarefa</button>
+    
+    <script>
+        const API='http://localhost:3000/tarefas';
+
+        function adicionarTarefa(){
+            const descricao = document.getElementById('descricao').value;
+            const nome = document.getElementById('nome').value;
+            fetch(API, {
+                method:'POST',
+                headers:{'Content-type': 'application/json'},
+                body: JSON.stringify({descricao, nome })
+            });
+
+        }
+
+        function deleteTarefa(){
+
+            fetch(API, {
+                method:'DELETE',
+                headers:{'Content-Type':'application/json'},
+                
+            })
+
+        }
+
+    </script>
+
+  </body>
+</html>
